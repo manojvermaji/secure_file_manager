@@ -1,0 +1,31 @@
+<%= form_with(model: file_upload, local: true) do |form| %>
+  <% if file_upload.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(file_upload.errors.count, "error") %> prevented this file from being saved:</h2>
+      <ul>
+        <% file_upload.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :file %><br>
+    <%= form.file_field :file %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Upload File", class: "btn btn-primary" %>
+  </div>
+<% end %>
